@@ -1,0 +1,22 @@
+html
+	head
+		block vars
+		title #{title}
+
+		// General metadata
+		meta(name='description', content='Research Survey')
+		meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+		meta(name="viewport", content="width=device-width")
+
+		// Bootstrap CSS
+		link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
+		link(rel='stylesheet', href='/datatables.net-bs/css/dataTables.bootstrap.min.css')
+
+		link(rel='stylesheet', href='/style.css')
+
+
+	body
+		block content
+		script(src="/jquery/dist/jquery.min.js")
+		script(src="/bootstrap/dist/js/bootstrap.min.js")
+		block scripts
