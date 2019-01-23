@@ -1,0 +1,15 @@
+extends boilerplate.pug
+
+block vars
+    - var title = "Welcome"
+
+block content
+    p Thank you for agreeing to participate in this survey. If you wish to know the results of this survey, the data will be made available at this address at some point in the future.
+    p Before you continue, please check this box to confirm that you have filled out and submitted your consent form.
+    
+    form(method="post")
+        .form-check
+            input(type="checkbox", onclick="consentBoxChanged()").form-check-input#confirmConsentCheckbox
+            label(for="confirmConsentCheckbox").form-check-label I have read, signed, and submitted the consent form for this survey.
+        br
+        button.btn.btn-primary(type="submit", disabled)#startSurveyButton Start Survey

@@ -1,0 +1,20 @@
+extends boilerplate.pug
+include mixins/formInputs.pug
+
+block vars
+    - var title = "Technology Personality Survey"
+
+block content
+    i Note: The following questions are optional
+    br
+    br
+    form.form-validate(method="post")
+        +simpleInput("What is your age?", "age", errorMessages, {placeholder: "Age", type: "number", postfix: "Years Old"})
+        +simpleInput("What gender do you identify as?", "gender", errorMessages, {placeholder: "Gender", type: "text"})
+        
+        br
+        i As part of this survey you will now be directed to a polling page. Feel free to look up the topic under consideration in another tab.
+        br
+        br
+        div(style="text-align: right;")
+            button.btn.btn-primary(type="submit") Continue

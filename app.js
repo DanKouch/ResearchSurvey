@@ -5,6 +5,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const winston = require('winston');
 
 const app = express();
@@ -27,6 +29,19 @@ app.use(cookieParser(config.sessionSecret));
 // Import local modules
 const databaseScript = require("./database.js");
 
+// Sessions
+app.use(session({
+  secret: config.sessionSecret,
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoStore({
+  	mongooseConnection: mongoose.connection
+  }),
+  cookie: {
+    maxAge: 31536000000
+  },
+}));
+
 // Set up public folders
 app.use("/", express.static('./bower_components'));
 app.use("/", express.static('./public'));
@@ -37,6 +52,7 @@ app.set('views', './app/views');
 
 // Base routing
 app.use("/", require("./app/router.js"));
+app.get('*', (req, res) => {res.render("error", {title: "404 Error", message: "The page you are looking for does not exist."})})
 
 // Start App HTTP server
 app.set('port', config.port);

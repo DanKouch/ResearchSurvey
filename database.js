@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const winston = require('winston')
 const config = require("./config.js")
 
-mongoose.connect(config.databaseURI).then(
+mongoose.connect(config.databaseURI/*, {useNewUrlParser: true}*/).then(
 	() => {
 		winston.info("Connected to MongoDB server at '" + config.databaseURI + "'");
 	},

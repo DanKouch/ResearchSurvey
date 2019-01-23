@@ -1,0 +1,15 @@
+extends boilerplate.pug
+include mixins/formInputs.pug
+
+block vars
+    - var title = "Technology Personality Survey"
+
+block content
+    
+    form.form-validate(method="post")
+        +likertInput("How trustworthy would you say the page you just visited is?", "trustworthiness", "Untrustworthy", "Trustworthy", errorMessages)
+        br
+        +yesNoInput("Do you believe that your vote was acutally counted?", "believeVoteWasCounted", errorMessages)
+        br
+        div(style="text-align: right;")
+            button.btn.btn-primary(type="submit") Continue

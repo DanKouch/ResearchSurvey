@@ -1,0 +1,30 @@
+extends boilerplate.pug
+include mixins/formInputs.pug
+
+block vars
+    - var title = "Technology Personality Survey"
+
+block style
+    link(rel='stylesheet', href='/verticalSplit.css')
+
+block content
+    form.form-validate(method="post")
+        h5 After reviewing the the polling page you used to the left, to what extent does the polling page exhibit the following personality traits?
+        br
+        +likertInput("Impatience", "impatience", "Not Impatient", "Very Impatient", errorMessages)
+        br
+        +likertInput("Deceitfulness", "deceitfulness", "Not Deceitful", "Very Deceitful", errorMessages)
+        br
+        +likertInput("Zaniness", "zaniness", "Not Zany", "Very Zany", errorMessages)
+        br
+        +likertInput("Friendliness", "friendliness", "Not Friendly", "Very Friendly", errorMessages)
+        br
+        +textAreaInput("Are there any other personality traits that you think this page exhibits? If so, please write them below alongside the extent to which you feel they are demonstrated.", "additionalPersonalityTraits", errorMessages)
+        br
+        div(style="text-align: right;")
+            button.btn.btn-primary(type="submit") Submit
+
+block raw_content
+    .iframeholder
+        .blocker
+        iframe(src="/polling/?blockContinue=true", title="Polling Page")

@@ -14,9 +14,21 @@ html
 
 		link(rel='stylesheet', href='/style.css')
 
+		block style
+
 
 	body
-		block content
-		script(src="/jquery/dist/jquery.min.js")
-		script(src="/bootstrap/dist/js/bootstrap.min.js")
-		block scripts
+		block raw_content
+		.containerholder
+			br
+			br
+			.container
+				h1.page-header #{title}
+				if title
+					hr
+				block content
+			script(src="/jquery/dist/jquery.min.js")
+			script(src="/bootstrap/dist/js/bootstrap.min.js")
+			script(src="/jquery-validation/dist/jquery.validate.min.js")
+			script(src="/script.js")
+			block scripts

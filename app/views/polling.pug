@@ -1,0 +1,45 @@
+extends boilerplate.pug
+include mixins/formInputs.pug
+
+block style
+    link(rel='stylesheet', href='/polling.css')
+    if zany
+        link(rel='stylesheet', href='/zany.css')
+
+block vars
+    - var zany = false
+    if freindly
+        - var title = "Welcome! Please cast your vote in our poll."
+
+block content
+    if zany
+        div(style="text-align: center;")
+            img(src="https://www.maxpixel.net/static/photo/1x/Scales-Lizard-Animal-Zoo-Reptile-Iguana-2676853.jpg")#iguanaPicture.img
+
+    if impatient
+        i(style="color: red; font-size: 16px")#impatientText Please fill out this poll as quickly as possible.
+        br
+        br
+
+    if freindly
+        i California 2018 Proposition 6 Ballot Text:
+        blockquote.blockquote(style="margin: 1em")
+            p.mb-0 "Repeals a 2017 transportation law's taxes and fees designated for road repairs and public transportation. Fiscal Impact: Reduced ongoing revenues of $5.1 billion from state fuel and vehicle taxes that mainly would have paid for highway and road maintenance and repairs, as well as transit programs."
+            footer.blockquote-footer
+                cite(title="California 2018 Voter Guide") California 2018 Voter Guide
+
+    form.form-validate(method="post")
+        +dropDownInput("Are you in favor of California's 2018 Proposition 6: Voter Approval for Future Gas and Vehicle Taxes and 2017 Tax Repeal Initiative?", "vote", errorMessages, ["Select an Option", "In Favor", "Not in Favor"])
+        
+        b(style="color: green", hidden)#thankYouText Thank you for participating!
+        
+        div(style="text-align: right;")
+            button.btn.btn-primary(type="submit", disabled=blockContinue) Continue
+
+block scripts
+    if deceptive
+        script(src="/deceptive.js")
+    if freindly
+        script(src="/freindly.js")
+    if impatient
+        script(src="/impatient.js")
