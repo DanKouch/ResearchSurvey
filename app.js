@@ -8,6 +8,8 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const winston = require('winston');
+const https = require("https");
+const fs = require('fs');
 
 const app = express();
 
@@ -54,9 +56,14 @@ app.set('views', './app/views');
 app.use("/", require("./app/router.js"));
 app.get('*', (req, res) => {res.render("error", {title: "404 Error", message: "The page you are looking for does not exist."})})
 
-// Start App HTTP server
-app.set('port', config.port);
+https.createServer({
+  key: fs.readFileSync("./ssl/private_key.key"),
+  ca: fs.readFileSync("./ssl/ca.ca-bundle"),
+  cert: fs.readFileSync("./ssl/certificate.crt")
+}, app).listen(443, () => {
+  winston.info("App HTTPS server started on port 443");
+});
 
-app.listen(app.get('port'), () => {
-  winston.info("App HTTP server started on port " + app.get('port'));
+app.listen(80, () => {
+  winston.info("App HTTP server started on port 80");
 });
