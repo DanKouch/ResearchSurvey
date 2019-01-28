@@ -29,11 +29,7 @@ app.use(bodyParser.json());
 app.use(cookieParser(config.sessionSecret));
 
 // Force HTTPS
-app.use(function(req, res){
-  if(!req.secure){
-    res.redirect("https://" + req.headers.host + req.url);
-  }
-});
+app.use(require('force-https'))
 
 // Import local modules
 const databaseScript = require("./database.js");
