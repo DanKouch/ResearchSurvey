@@ -33,7 +33,7 @@ module.exports.getPolling = (req, res) => {
             deceptive: submission.deceptive,
             impatient: submission.impatient,
             freindly: submission.freindly,
-            zany: submission.zany,
+            quirky: submission.quirky,
             blockContinue: (req.query.blockContinue == "true")
         })
     })

@@ -21,7 +21,7 @@ let submissionShema = new Schema({
     deceptive:              {type: Boolean, required: true},
     impatient:              {type: Boolean, required: true},
     freindly:               {type: Boolean, required: true},
-    zany:                   {type: Boolean, required: true},
+    quirky:                 {type: Boolean, required: true},
 
     // Dependent Variables
     votedInPoll:            {type: Boolean},
