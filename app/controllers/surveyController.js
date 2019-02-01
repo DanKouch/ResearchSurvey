@@ -149,7 +149,7 @@ module.exports.startSurvey = (req, res) => {
         deceptive: random.bool(),
         impatient: random.bool(),
         freindly: random.bool(),
-        zany: random.bool()
+        quirky: random.bool()
     }, (err, submission) => {
         if(err)
             winston.error("asd " + err)
