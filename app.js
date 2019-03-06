@@ -29,7 +29,8 @@ app.use(bodyParser.json());
 app.use(cookieParser(config.sessionSecret));
 
 // Force HTTPS
-app.use(require('force-https'))
+if(process.env.NODE_ENV == "production")
+  app.use(require('force-https'))
 
 // Import local modules
 const databaseScript = require("./database.js");
@@ -67,6 +68,6 @@ https.createServer({
   winston.info("App HTTPS server started on port 443");
 });
 
-app.listen(80, () => {
+app.listen(process.env.NODE_ENV == "production" ? 80 : 8000, () => {
   winston.info("App HTTP server started on port 80");
 });

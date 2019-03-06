@@ -4,12 +4,19 @@ block vars
     - var title = "Welcome"
 
 block content
-    p Thank you for agreeing to participate in this survey. If you wish to know the results of this survey, the data will be made available at this address at some point in the future.
-    p Before you continue, please check this box to confirm that you have filled out and submitted your consent form.
+
+    p You are being asked to participate in an online experimental survey as part of a research project by a student in Monte Vista High School’s AP Research class. This survey will ask you to optionally provide two pieces of demographic data (age and identified gender), as well as to view and analyze and experimental webpage.
+    p The survey will take around three minutes to complete. Please note that, in order to detect possible spam, the IP address of the computer, as well as the time each survey is completed, will be recorded.
+    p Doing this online survey will cause little or no risk. The survey has been designed to protect each participant’s privacy. Students will not put their names on the survey. Also, no student will ever be mentioned by name in a report of the results. Students will get no benefit right away from taking part in the survey. This survey is completely voluntary. No action will be taken against any student who does not wish to participate. Students can skip any question that they do not wish to answer. In addition, <b>students may stop participating in the survey at any point</b> without penalty. 
+    
+    br
+
+    p
+        i Before you continue, please check this box to confirm that you have read the above statements and consent to the use of the data you provide in this survey.
     
     form(method="post")
         .form-check
             input(type="checkbox", onclick="consentBoxChanged()").form-check-input#confirmConsentCheckbox
-            label(for="confirmConsentCheckbox").form-check-label I have read, signed, and submitted the consent form for this survey.
+            label(for="confirmConsentCheckbox").form-check-label I have read the above statement and consent to the use of the data I provide in this survey.
         br
         button.btn.btn-primary(type="submit", disabled)#startSurveyButton Start Survey

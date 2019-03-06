@@ -8,7 +8,7 @@ mixin simpleInput(prettyName, codeName, errorMessages, settings)
 				.input-group-append
 					span.plusminusbutton.input-group-text(onclick="$('#"+(codeName + "Input")+"').val((i, old) => ++old)") +
 				.input-group-append
-					span.plusminusbutton.input-group-text(onclick="$('#"+(codeName + "Input")+"').val((i, old) => --old)", style="border-left: 0.1px solid lightgrey") −
+					span.plusminusbutton.input-group-text(onclick="$('#"+(codeName + "Input")+"').val((i, old) => Math.max(--old, 0))", style="border-left: 0.1px solid lightgrey") −
 			if settings && settings.postfix
 				.input-group-append
 					span.input-group-text= settings.postfix
