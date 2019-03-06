@@ -29,8 +29,10 @@ app.use(bodyParser.json());
 app.use(cookieParser(config.sessionSecret));
 
 // Force HTTPS
-if(process.env.NODE_ENV == "production")
+if(process.env.NODE_ENV == "production"){
   app.use(require('force-https'))
+  winston.info("Running in production mode.")
+}
 
 // Import local modules
 const databaseScript = require("./database.js");
